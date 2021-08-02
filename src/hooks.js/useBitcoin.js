@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 
+
 const Label = styled.label`
     font-family:'Bebas Neue', cursive;
     color: #fff;
@@ -21,12 +22,13 @@ const Selection = styled.select`
     font-size: 1.2rem;
 `;
 
-export const useCoin = (label, initialState, options) => {
+export const useBitcoin = (label, initialState, options) => {
+
 
     //State del hook
     const [state, setState] = useState(initialState);
 
-    const Select = () => (
+    const SelectCripto = () => (
         <>
             <Label>{ label }</Label>
             <Selection
@@ -35,12 +37,12 @@ export const useCoin = (label, initialState, options) => {
             >
                 <option value="">- Seleccione -</option>
                 {options.map( option => (
-                    <option key={option.code} value={option.code}>{option.name}</option> 
+                    <option key={option.CoinInfo.Id} value={option.CoinInfo.Name}>{option.CoinInfo.FullName}</option> 
                 ))}
             </Selection>
         </>
     )
 
     //Retornar state, interfaz y fn que modifica el state
-    return[ state, Select, setState ];
+    return[ state, SelectCripto, setState ];
 }
